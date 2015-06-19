@@ -199,6 +199,7 @@ int main(){
     }
     writer.writeEvent();
     store.next();
+    delete hepmcevt;
   }
   
   writer.finish();
