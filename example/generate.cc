@@ -54,11 +54,11 @@ int main(){
   // pythia.readString("HiggsSM:ffbar2HZ = on");
   // pythia.readString("25:onMode = off");
   // pythia.readString("25:onIfMatch = 23 23");
-  // pythia.readString("WeakSingleBoson:ffbar2gmZ = on");
+  pythia.readString("WeakDoubleBoson:ffbar2gmZgmZ = on");
   // pythia.readString("23:mMin = 30");
   // pythia.readString("22:mMin = 30");
   // pythia.readString("HiggsSM:ffbar2HZ = on");
-  pythia.readString("WeakDoubleBoson:ffbar2WW = on");
+  // pythia.readString("WeakDoubleBoson:ffbar2WW = on");
   // pythia.readString("WeakSingleBoson:ffbar2gmZ = on");
   // pythia.readString("PhaseSpace:pTHatMin = 20.");
   // pythia.readString("24:onMode = off");
