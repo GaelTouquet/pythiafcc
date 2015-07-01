@@ -43,7 +43,7 @@ int main(){
   writer.registerForWrite<GenVertexCollection>("GenVertex");
   writer.registerForWrite<GenJetCollection>("GenJet");
 
-  unsigned nevents=300000;
+  unsigned nevents=150000;
 
   // Generator. Process selection. LHC initialization. Histogram.
   Pythia8::Pythia pythia;
@@ -51,17 +51,23 @@ int main(){
   pythia.readString("Beams:idB = -11");
 
   pythia.readString("Beams:eCM = 240.");
+  // pythia.readString("HiggsSM:ffbar2HZ = on");
+  // pythia.readString("25:onMode = off");
+  // pythia.readString("25:onIfMatch = 23 23");
   // pythia.readString("WeakSingleBoson:ffbar2gmZ = on");
   // pythia.readString("23:mMin = 30");
   // pythia.readString("22:mMin = 30");
   // pythia.readString("HiggsSM:ffbar2HZ = on");
   pythia.readString("WeakDoubleBoson:ffbar2WW = on");
+  // pythia.readString("WeakSingleBoson:ffbar2gmZ = on");
   // pythia.readString("PhaseSpace:pTHatMin = 20.");
   // pythia.readString("24:onMode = off");
   // pythia.readString("23:onIfMatch = 13 13");
   // pythia.readString("24:onIfMatch = 15 16");
   // pythia.readString("23:onMode = off");
   // pythia.readString("23:onIfMatch = 13 13");
+  pythia.readString("Random:setSeed = on");
+  pythia.readString("Random:seed = 0");
   pythia.init();
 
   // pythia.readString("Beams:eCM = 180.");
@@ -140,6 +146,7 @@ int main(){
       // std::cout<<" in map "<<vtx_map[*iv].index()<<"/"<<vtx_map[*iv].containerID()<<std::endl;
     }
     //     std::cout<<"Nptc = "<<hepmcevt->particles_size()<<std::endl;
+    int lepton_counter = 0;
     input_particles.clear();
     for ( HepMC::GenEvent::particle_iterator ip = hepmcevt->particles_begin();
 	  ip != hepmcevt->particles_end(); ++ip ) {
@@ -153,6 +160,7 @@ int main(){
       core.P4.Py = hepmcptc->momentum().py();
       core.P4.Pz = hepmcptc->momentum().pz();
       core.P4.Mass = hepmcptc->momentum().m();
+      if(core.Status==1) {if(core.Type==11 || core.Type==-11 || core.Type==13 || core.Type==-13) {lepton_counter++;}}
       // hepmcptc->print();
       if(core.Status==1) {
 	input_particles.push_back( fastjet::PseudoJet(hepmcptc->momentum().px(),

@@ -1,0 +1,2 @@
+/home/touck/FCC/pythiafcc/install/bin/pythiafcc-generate
+/home/touck/FCC/pythiafcc/install/lib/libpythiafcc-myanalysis.so
