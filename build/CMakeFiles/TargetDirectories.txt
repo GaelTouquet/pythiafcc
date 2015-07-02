@@ -1,2 +1,0 @@
-/home/touck/FCC/pythiafcc/build/example/CMakeFiles/pythiafcc-generate.dir
-/home/touck/FCC/pythiafcc/build/example-lib/CMakeFiles/pythiafcc-myanalysis.dir
